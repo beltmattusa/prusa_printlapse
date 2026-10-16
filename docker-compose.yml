@@ -1,0 +1,13 @@
+services:
+  printlapse:
+    image: alpine:3.20
+    container_name: printlapse
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./printlapse.sh:/app/printlapse.sh:ro
+      - ./frames:/frames
+      - ./timelapses:/output
+    command: >
+      sh -c "apk add --no-cache bash ffmpeg curl jq tzdata coreutils >/dev/null &&
+             exec bash /app/printlapse.sh"
