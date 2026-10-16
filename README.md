@@ -6,7 +6,7 @@ The container polls the printer through PrusaLink. While a print runs, it grabs 
 
 ## Requirements
 
-- Prusa printer with PrusaLink (Core One, MK4, MK3.9, XL, MINI) running current firmware
+- Prusa printer with PrusaLink running current firmware
 - Buddy3D camera on the same network as the Docker host
 - Docker with Compose (any Linux host, a Synology NAS with Container Manager, etc.)
 
