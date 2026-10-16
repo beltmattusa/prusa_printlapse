@@ -47,6 +47,13 @@ stitch() {
     rm -rf "$dir"
     return
   fi
+  # Renumber so deleted frames leave no gaps (ffmpeg stops at the first missing number).
+  local i=0 f n
+  while IFS= read -r f; do
+    i=$((i + 1))
+    n=$(printf '%s/%06d.jpg' "$dir" "$i")
+    [ "$f" = "$n" ] || mv "$f" "$n"
+  done < <(find "$dir" -maxdepth 1 -name '*.jpg' | sort)
   mkdir -p "$OUTPUT_DIR"
   out="${OUTPUT_DIR}/$(basename "$dir").mp4"
   log "Stitching $count frames -> $out"
