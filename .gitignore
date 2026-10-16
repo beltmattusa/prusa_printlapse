@@ -1,0 +1,5 @@
+   .env
+   frames/*
+   !frames/.gitkeep
+   timelapses/*
+   !timelapses/.gitkeep
